@@ -42,34 +42,44 @@ API que calcula o DAS (Imposto Simples Nacional) para empresas do regime ME, com
 ✔️ Testabilidade: 100% dos serviços podem ser testados com mocks
 
 ---
-🚀 Como Executar o Projeto
+## 🚀 Como Executar o Projeto
+
 Requisitos
+
 .NET 8 SDK
+
 PostgreSQL
+
 Visual Studio 2022 ou VS Code
 
-# Clone o projeto
+---
+
+## Clone o projeto
 git clone https://github.com/JulianoPS/API_calc_trib_Simpl_Nacional.git
 cd API_calc_trib_Simpl_Nacional
 
-# ⚠️ Verifique se appsettings.json está corretamente configurado
+### ⚠️ Verifique se appsettings.json está corretamente configurado
 
-# Instale pacotes
+### Instale pacotes
 dotnet restore
 
-# Crie o banco de dados e execute as migrations
+### Crie o banco de dados e execute as migrations
 dotnet ef database update --project APISimplesNacional.Infra --startup-project APISimplesNacional
 
-# Rode a aplicação
+### Rode a aplicação
 dotnet run --project APISimplesNacional
 
-👨💻 Autor
+---
+
+## 👨💻 Autor
 Juliano Pereira dos Santos
 - 🔗 **LinkedIn:** [linkedin.com/in/julianopereiradossantos]( https://www.linkedin.com/in/julianopereiradossantos )  
 - ✉️ **Email:** juliano@email.com  
 - 🐙 **GitHub:** [github.com/JulianoPS]( https://github.com/JulianoPS )
 
-🧱 Estrutura do Projeto
+---
+
+## 🧱 Estrutura do Projeto
 Abaixo, a estrutura de pastas e arquivos do projeto, com comentários sobre as dependências entre os componentes:
 
 APISimplesNacional.API: Projeto principal da API. Contém os controladores que dependem das interfaces definidas em APISimplesNacional.Application.Interfaces.
