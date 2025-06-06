@@ -93,7 +93,7 @@ APISimplesNacional.Infra: Implementa os repositórios definidos em APISimplesNac
 APISimplesNacional.Testes: Contém os testes unitários para os serviços da aplicação.
 
 ## 🧭 Estrutura de Pastas (comentada)
-
+```bash
 SimplesNacional.sln
 │
 ├── APISimplesNacional.API					# Projeto principal da API					
@@ -199,6 +199,9 @@ SimplesNacional.sln
         ├── TabelaINSSServiceTests.cs
         ├── TabelaIRControllerTestes.cs
         └── TabelaIRServiceTestes.cs
+```
+
+---
 
 ## 🖼️ **Screenshots**
 
