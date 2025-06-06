@@ -6,5 +6,6 @@
 *.sqlite
 .env
 .vs/
+appsettings.json
 APISimplesNacional.Application/Helpers/CalculoHelper.cs
 APISimplesNacional\appsettings.json
