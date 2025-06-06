@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+*.user
+*.suo
+*.db
+*.sqlite
+.env
+.vs/
+APISimplesNacional.Application/Helpers/CalculoHelper.cs
+APISimplesNacional\appsettings.json
