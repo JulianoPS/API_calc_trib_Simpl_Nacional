@@ -30,14 +30,14 @@ API que calcula o DAS (Imposto Simples Nacional) para empresas do regime ME, com
 
 ## 🧠 Diretrizes Arquiteturais
 
-✔️ Clean Architecture: cada camada tem responsabilidade clara
+✔️ Clean Architecture: cada camada tem responsabilidade clara.
 ✔️ SOLID:
-- SRP (responsabilidade única): cada classe tem um objetivo
-- DIP (injeção de dependência): serviços e controladores são injetados
-✔️ Object Calisthenics: código limpo, coeso e desacoplado
-✔️ Testabilidade: 100% dos serviços podem ser testados com mocks
-✔️ AutoMapper: elimina código de conversão manual entre entidades e DTOs
-✔️ FluentValidation: regras de validação centralizadas nos próprios DTOs
+- SRP (responsabilidade única): cada classe tem um objetivo.
+- DIP (injeção de dependência): serviços e controladores são injetados.
+✔️ Object Calisthenics: código limpo, coeso e desacoplado.
+✔️ Testabilidade: 100% dos serviços podem ser testados com mocks.
+✔️ AutoMapper: elimina código de conversão manual entre entidades e DTOs.
+✔️ FluentValidation: regras de validação centralizadas nos próprios DTOs.
 ---
 
 ## 🚀 Como Executar o Projeto
@@ -76,7 +76,7 @@ dotnet run --project APISimplesNacional
 ## 👨💻 Autor
 Juliano Pereira dos Santos
 - 🔗 **LinkedIn:** [linkedin.com/in/julianopereiradossantos]( https://www.linkedin.com/in/julianopereiradossantos )  
-- ✉️ **Email:** juliano@email.com  
+- ✉️ **Email:** julianops79@gmail.com  
 - 🐙 **GitHub:** [github.com/JulianoPS]( https://github.com/JulianoPS )
 
 ---
