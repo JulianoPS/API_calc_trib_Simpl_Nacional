@@ -31,13 +31,19 @@ API que calcula o DAS (Imposto Simples Nacional) para empresas do regime ME, com
 ## 🧠 Diretrizes Arquiteturais
 
 ✔️ Clean Architecture: cada camada tem responsabilidade clara.
+
 ✔️ SOLID:
 - SRP (responsabilidade única): cada classe tem um objetivo.
 - DIP (injeção de dependência): serviços e controladores são injetados.
+
 ✔️ Object Calisthenics: código limpo, coeso e desacoplado.
+
 ✔️ Testabilidade: 100% dos serviços podem ser testados com mocks.
+
 ✔️ AutoMapper: elimina código de conversão manual entre entidades e DTOs.
+
 ✔️ FluentValidation: regras de validação centralizadas nos próprios DTOs.
+
 ---
 
 ## 🚀 Como Executar o Projeto
