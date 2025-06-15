@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace APISimplesNacional.Infra.Migrations
 {
     [DbContext(typeof(SimplesNacionalDbContext))]
-    [Migration("20250519130920_AddDeduzINSS")]
-    partial class AddDeduzINSS
+    [Migration("20250610034721_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,7 +61,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            Aliquota = 0.06m,
+                            Aliquota = 6.0m,
                             Faixa = 1,
                             IdEmpresa = 1,
                             LimiteFin = 180000m,
@@ -71,7 +71,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 2,
-                            Aliquota = 0.112m,
+                            Aliquota = 11.2m,
                             Faixa = 2,
                             IdEmpresa = 1,
                             LimiteFin = 360000m,
@@ -81,7 +81,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 3,
-                            Aliquota = 0.135m,
+                            Aliquota = 13.5m,
                             Faixa = 3,
                             IdEmpresa = 1,
                             LimiteFin = 720000m,
@@ -91,7 +91,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 4,
-                            Aliquota = 0.16m,
+                            Aliquota = 16.0m,
                             Faixa = 4,
                             IdEmpresa = 1,
                             LimiteFin = 1800000m,
@@ -101,7 +101,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 5,
-                            Aliquota = 0.205m,
+                            Aliquota = 20.5m,
                             Faixa = 5,
                             IdEmpresa = 1,
                             LimiteFin = 3600000m,
@@ -111,7 +111,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 6,
-                            Aliquota = 0.33m,
+                            Aliquota = 33.0m,
                             Faixa = 6,
                             IdEmpresa = 1,
                             LimiteFin = 4800000m,
@@ -156,7 +156,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            Aliquota = 0.15m,
+                            Aliquota = 15.5m,
                             Faixa = 1,
                             IdEmpresa = 1,
                             LimiteFin = 180000m,
@@ -166,7 +166,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 2,
-                            Aliquota = 0.18m,
+                            Aliquota = 18.0m,
                             Faixa = 2,
                             IdEmpresa = 1,
                             LimiteFin = 360000m,
@@ -176,7 +176,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 3,
-                            Aliquota = 0.195m,
+                            Aliquota = 19.5m,
                             Faixa = 3,
                             IdEmpresa = 1,
                             LimiteFin = 720000m,
@@ -186,7 +186,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 4,
-                            Aliquota = 0.205m,
+                            Aliquota = 20.5m,
                             Faixa = 4,
                             IdEmpresa = 1,
                             LimiteFin = 1800000m,
@@ -196,7 +196,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 5,
-                            Aliquota = 0.23m,
+                            Aliquota = 23.0m,
                             Faixa = 5,
                             IdEmpresa = 1,
                             LimiteFin = 3600000m,
@@ -206,7 +206,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 6,
-                            Aliquota = 0.305m,
+                            Aliquota = 30.5m,
                             Faixa = 6,
                             IdEmpresa = 1,
                             LimiteFin = 4800000m,
@@ -234,6 +234,9 @@ namespace APISimplesNacional.Infra.Migrations
                     b.Property<decimal>("IrDependente")
                         .HasColumnType("numeric");
 
+                    b.Property<decimal>("IrVlrIsento")
+                        .HasColumnType("numeric");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("text");
@@ -248,7 +251,8 @@ namespace APISimplesNacional.Infra.Migrations
                             Id = 1,
                             Celular = "(62)99213-7872",
                             Email = "julianops79@gmail.com",
-                            IrDependente = 0m,
+                            IrDependente = 189.29m,
+                            IrVlrIsento = 3036.00m,
                             Nome = "JPS Technology in Development"
                         });
                 });
@@ -320,7 +324,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            Aliquota = 0.075m,
+                            Aliquota = 7.5m,
                             Deducao = 0.00m,
                             Faixa = 1,
                             IdEmpresa = 1,
@@ -330,7 +334,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 2,
-                            Aliquota = 0.09m,
+                            Aliquota = 9m,
                             Deducao = 22.77m,
                             Faixa = 2,
                             IdEmpresa = 1,
@@ -340,7 +344,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 3,
-                            Aliquota = 0.12m,
+                            Aliquota = 12m,
                             Deducao = 106.59m,
                             Faixa = 3,
                             IdEmpresa = 1,
@@ -350,7 +354,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 4,
-                            Aliquota = 0.14m,
+                            Aliquota = 14m,
                             Deducao = 190.40m,
                             Faixa = 4,
                             IdEmpresa = 1,
@@ -376,6 +380,9 @@ namespace APISimplesNacional.Infra.Migrations
                     b.Property<int>("IdEmpresa")
                         .HasColumnType("integer");
 
+                    b.Property<decimal>("IrVlrIsento")
+                        .HasColumnType("numeric");
+
                     b.Property<decimal>("LimiteFin")
                         .HasColumnType("numeric");
 
@@ -398,49 +405,54 @@ namespace APISimplesNacional.Infra.Migrations
                             Aliquota = 0m,
                             Faixa = 1,
                             IdEmpresa = 1,
-                            LimiteFin = 3036m,
+                            IrVlrIsento = 0m,
+                            LimiteFin = 2428.80m,
                             LimiteInic = 0m,
                             VlrDeduzir = 0m
                         },
                         new
                         {
                             Id = 2,
-                            Aliquota = 0.075m,
+                            Aliquota = 7.5m,
                             Faixa = 2,
                             IdEmpresa = 1,
-                            LimiteFin = 3533.31m,
-                            LimiteInic = 3036m,
-                            VlrDeduzir = 169.44m
+                            IrVlrIsento = 0m,
+                            LimiteFin = 2826.65m,
+                            LimiteInic = 2428.01m,
+                            VlrDeduzir = 182.16m
                         },
                         new
                         {
                             Id = 3,
-                            Aliquota = 0.15m,
+                            Aliquota = 15.0m,
                             Faixa = 3,
                             IdEmpresa = 1,
-                            LimiteFin = 4688.85m,
-                            LimiteInic = 3533.31m,
-                            VlrDeduzir = 381.44m
+                            IrVlrIsento = 0m,
+                            LimiteFin = 3751.05m,
+                            LimiteInic = 2826.65m,
+                            VlrDeduzir = 394.16m
                         },
                         new
                         {
                             Id = 4,
-                            Aliquota = 0.225m,
+                            Aliquota = 22.5m,
                             Faixa = 4,
                             IdEmpresa = 1,
-                            LimiteFin = 5830.85m,
-                            LimiteInic = 4688.85m,
-                            VlrDeduzir = 662.77m
+                            IrVlrIsento = 0m,
+                            LimiteFin = 4664.68m,
+                            LimiteInic = 3751.06m,
+                            VlrDeduzir = 675.49m
                         },
                         new
                         {
                             Id = 5,
-                            Aliquota = 0.275m,
+                            Aliquota = 27.5m,
                             Faixa = 5,
                             IdEmpresa = 1,
+                            IrVlrIsento = 0m,
                             LimiteFin = 99999999m,
-                            LimiteInic = 5830.85m,
-                            VlrDeduzir = 896m
+                            LimiteInic = 4664.69m,
+                            VlrDeduzir = 908.73m
                         });
                 });
 

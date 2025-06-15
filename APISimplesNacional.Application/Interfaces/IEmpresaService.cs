@@ -1,6 +1,5 @@
 ﻿using APISimplesNacional.Infra.Entidades;
 using APISimplesNacional.Application.Dtos;
-
 namespace APISimplesNacional.Application.Interfaces
 {
     public interface IEmpresaService
@@ -10,5 +9,4 @@ namespace APISimplesNacional.Application.Interfaces
         Task<Empresas?> ObterPorIdAsync(int id);
         Task AtualizarIrDependenteAsync(string email, string celular, decimal irDependente);
     }
-
 }

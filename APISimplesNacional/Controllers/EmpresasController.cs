@@ -3,6 +3,8 @@ using APISimplesNacional.Application.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using APISimplesNacional.Domain.Interfaces;
 using APISimplesNacional.Infra.Entidades;
+using AutoMapper;
+using FluentValidation;
 
 namespace APISimplesNacional.API.Controllers
 {
@@ -12,11 +14,15 @@ namespace APISimplesNacional.API.Controllers
     {
         private readonly IEmpresaService _empresaService;
         private readonly ICalculoDespesaService _calculoService;
+        private readonly IMapper _mapper;
+        private readonly IValidator<CriarEmpresaDto> _criarValidator;
 
-        public EmpresasController(IEmpresaService empresaService, ICalculoDespesaService calculoService)
+        public EmpresasController(IEmpresaService empresaService, ICalculoDespesaService calculoService, IMapper mapper, IValidator<CriarEmpresaDto> criarValidator)
         {
             _empresaService = empresaService;
             _calculoService = calculoService;
+            _mapper = mapper;
+            _criarValidator = criarValidator;
         }
 
         [HttpGet("testar-erro")]
@@ -37,11 +43,11 @@ namespace APISimplesNacional.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Post([FromBody] CriarEmpresaDto dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            
 
             var criada = await _empresaService.CriarEmpresaComTabelasAsync(dto);
-            return CreatedAtAction(nameof(Post), new { id = criada.Id }, criada);
+            var respDto = _mapper.Map<EmpresaResponseDto>(criada);
+            return CreatedAtAction(nameof(Post), new { id = criada.Id }, respDto);
         }
 
 
@@ -60,15 +66,9 @@ namespace APISimplesNacional.API.Controllers
             if (emp == null)
                 return NotFound(new { mensagem = "Empresa não encontrada." });
 
-            var response = new EmpresaResponseDto
-            {
-                Nome = emp.Nome,
-                Celular = emp.Celular,
-                Email = emp.Email,
-                IrDependente = emp.IrDependente
-            };
+            var dto = _mapper.Map<EmpresaResponseDto>(emp);
 
-            return Ok(response);
+            return Ok(dto);
         }
 
         /// <summary>

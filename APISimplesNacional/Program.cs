@@ -1,10 +1,14 @@
 ﻿using APISimplesNacional.Application.Interfaces;
+using APISimplesNacional.Application.Mapping;
 using APISimplesNacional.Application.Services;
+using APISimplesNacional.Application.Validators;
 using APISimplesNacional.Domain.Interfaces;
 using APISimplesNacional.Domain.Repositories;
 using APISimplesNacional.Infra.Contexto;
 using APISimplesNacional.Infra.Repositorios;
 using APISimplesNacional.Middlewares;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -35,6 +39,16 @@ builder.Services.AddScoped<IEmpresaRepositorio, EmpresaRepositorio>();
 builder.Services.AddScoped<ICalculoInssService, CalculoInssService>();
 builder.Services.AddScoped<ICalculoIrService, CalculoIrService>();
 builder.Services.AddScoped<IAtividadeService, AtividadeService>();
+
+
+builder.Services.AddAutoMapper(typeof(EmpresasProfile).Assembly);
+builder.Services.AddValidatorsFromAssemblyContaining<CalculoRequestDtoValidator>();
+
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CalculoRequestDtoValidator>();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssembly(typeof(EmpresaDtoValidator).Assembly);
+
 
 // Adiciona controladores
 builder.Services.AddControllers();
@@ -72,18 +86,52 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Auto-aplica migrations ao iniciar
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<SimplesNacionalDbContext>();
+    try
+    {
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Erro ao aplicar migrations no startup.");
+        // Se desejar não iniciar em caso de falha:
+        throw;
+    }
+}
+
+
 // Middleware global de tratamento de exceções
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors("AllowAll");
 
-// Habilita o Swagger mesmo fora do ambiente de desenvolvimento
-app.UseSwagger();
-app.UseSwaggerUI(c =>
+var apiPrefix = builder.Configuration["ApiPrefix"] ?? string.Empty;
+if (!string.IsNullOrEmpty(apiPrefix))
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Simples Nacional v1");
-    c.RoutePrefix = string.Empty; // Faz com que o Swagger abra direto na raiz: https://localhost:7099/
-});
+    app.UsePathBase(apiPrefix);
+    // Em produção, JSON em /{documentName}/swagger.json
+    app.UseSwagger(c => c.RouteTemplate = "{documentName}/swagger.json");
+    app.UseSwaggerUI(c =>
+    {
+        c.RoutePrefix = "swagger";
+        c.SwaggerEndpoint($"{apiPrefix}/v1/swagger.json", "API v1");
+    });
+}
+else
+{
+    // Em dev, use padrão:
+    app.UseSwagger(); // JSON em /swagger/v1/swagger.json
+    app.UseSwaggerUI(c =>
+    {
+        c.RoutePrefix = string.Empty; // opcional, UI direto na raiz
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
+    });
+}
+
 
 // HTTPS Redireciona HTTP para HTTPS
 app.UseHttpsRedirection();

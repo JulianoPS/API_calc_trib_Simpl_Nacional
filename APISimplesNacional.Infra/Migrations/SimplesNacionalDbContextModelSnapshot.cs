@@ -153,7 +153,7 @@ namespace APISimplesNacional.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            Aliquota = 15m,
+                            Aliquota = 15.5m,
                             Faixa = 1,
                             IdEmpresa = 1,
                             LimiteFin = 180000m,

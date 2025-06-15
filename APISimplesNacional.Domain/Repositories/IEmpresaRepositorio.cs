@@ -1,5 +1,4 @@
 ﻿using APISimplesNacional.Infra.Entidades;
-
 public interface IEmpresaRepositorio
 {
     Task<Empresas?> ObterPorIdAsync(int id);

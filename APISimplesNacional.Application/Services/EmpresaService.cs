@@ -1,6 +1,7 @@
 ﻿using APISimplesNacional.Application.Dtos;
 using APISimplesNacional.Application.Interfaces;
 using APISimplesNacional.Infra.Entidades;
+using AutoMapper;
 
 namespace APISimplesNacional.Application.Services
 {
@@ -8,13 +9,16 @@ namespace APISimplesNacional.Application.Services
     {
         private readonly IEmpresaRepositorio _empresaRepositorio;
         private readonly IClonagemRepositorio _clonagemRepositorio;
+        private readonly IMapper _mapper;
 
         public EmpresaService(
             IEmpresaRepositorio empresaRepositorio,
-            IClonagemRepositorio clonagemRepositorio)
+            IClonagemRepositorio clonagemRepositorio,
+            IMapper mapper)
         {
             _empresaRepositorio = empresaRepositorio;
             _clonagemRepositorio = clonagemRepositorio;
+            _mapper = mapper;
         }
 
         public async Task<Empresas?> ObterPorEmailOuCelularAsync(string? email, string? celular)
@@ -34,12 +38,7 @@ namespace APISimplesNacional.Application.Services
             if ((existente != null) && (!existente.Celular.Equals("(62)99213-7872")))
                 throw new InvalidOperationException("Já existe uma empresa com este e-mail ou celular.");
 
-            var novaEmpresa = new Empresas
-            {
-                Nome = dto.Nome,
-                Email = dto.Email,
-                Celular = dto.Celular
-            };
+            var novaEmpresa = _mapper.Map<Empresas>(dto);
 
             await _empresaRepositorio.AdicionarAsync(novaEmpresa);
 

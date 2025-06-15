@@ -96,19 +96,6 @@ namespace APISimplesNacional.API.Controllers
         [ProducesResponseType(typeof(CalculoResponseDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> CalcularSimplesNacional([FromBody] CalculoRequestDto request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            bool valida = await _atividadeService.AtividadeValidaAsync(request.Atividade);
-            if (!valida)
-            {
-                return BadRequest(new { mensagem = "A atividade selecionada não está válida para Simples Nacional." });
-            }
-
-            if (request.Atividade.Equals("Minha atividade não está na lista", System.StringComparison.OrdinalIgnoreCase))
-            {
-                return BadRequest(new { mensagem = "A atividade selecionada não está sujeita ao Fator R!" });
-            }
 
             var result = await _calculoService.CalcularAsync(request);
             return Ok(result);

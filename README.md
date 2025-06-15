@@ -1,7 +1,6 @@
 # 📊 API - Cálculo de Tributos Simples Nacional
 
 API que calcula o DAS (Imposto Simples Nacional) para empresas do regime ME, com base nos Anexos III e V, considerando o enquadramento via Fator R, além do cálculo de INSS e IR para sócios (pró-labore) e funcionários (holerite).
-
 ---
 
 ## ✅ Funcionalidades
@@ -12,7 +11,6 @@ API que calcula o DAS (Imposto Simples Nacional) para empresas do regime ME, com
 - ✔️ Simula custo mensal da empresa, incluindo folha, encargos e despesas fixas
 - ✔️ Compara ME x MEI automaticamente
 - ✔️ Possui Swagger com documentação completa
-
 ---
 
 ## 🛠️ Tecnologias Utilizadas
@@ -26,22 +24,22 @@ API que calcula o DAS (Imposto Simples Nacional) para empresas do regime ME, com
 - ✅ Moq + xUnit (para testes)
 - ✅ Reflection (para ocultar lógica sensível)
 - ✅ Clean Architecture + SOLID + Object Calisthenics
-
+- ➕ AutoMapper (mapeamento DTO ↔ Entidade)
+- ➕ FluentValidation (validação de requisições via DTOs)
 ---
 
 ## 🧠 Diretrizes Arquiteturais
 
 ✔️ Clean Architecture: cada camada tem responsabilidade clara
-
 ✔️ SOLID:
 - SRP (responsabilidade única): cada classe tem um objetivo
 - DIP (injeção de dependência): serviços e controladores são injetados
-
 ✔️ Object Calisthenics: código limpo, coeso e desacoplado
-
 ✔️ Testabilidade: 100% dos serviços podem ser testados com mocks
-
+✔️ AutoMapper: elimina código de conversão manual entre entidades e DTOs
+✔️ FluentValidation: regras de validação centralizadas nos próprios DTOs
 ---
+
 ## 🚀 Como Executar o Projeto
 
 Requisitos
@@ -58,7 +56,11 @@ Visual Studio 2022 ou VS Code
 git clone https://github.com/JulianoPS/API_calc_trib_Simpl_Nacional.git
 cd API_calc_trib_Simpl_Nacional
 
-### ⚠️ Verifique se appsettings.json está corretamente configurado
+### ⚠️ Verifique se appsettings.json 
+Ajuste a string de conexão em ConnectionStrings:DefaultConnection
+
+Se desejar usar prefixo (ApiPrefix), adicione "ApiPrefix": "/apisn"
+
 
 ### Instale pacotes
 dotnet restore
