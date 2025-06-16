@@ -1,4 +1,7 @@
 # 📊 API - Cálculo de Tributos Simples Nacional
+[![Build Status](https://github.com/JulianoPS/API_calc_trib_Simpl_Nacional/actions/workflows/dotnet.yml/badge.svg)](https://github.com/JulianoPS/API_calc_trib_Simpl_Nacional/actions)
+[![Coverage Status](https://coveralls.io/repos/github/JulianoPS/API_calc_trib_Simpl_Nacional/badge.svg)](https://coveralls.io/github/JulianoPS/API_calc_trib_Simpl_Nacional)
+[![.NET Version](https://img.shields.io/badge/.NET-8.0-blue)](https://dotnet.microsoft.com)
 
 API que calcula o DAS (Imposto Simples Nacional) para empresas do regime ME, com base nos Anexos III e V, considerando o enquadramento via Fator R, além do cálculo de INSS e IR para sócios (pró-labore) e funcionários (holerite).
 ---
@@ -43,7 +46,14 @@ API que calcula o DAS (Imposto Simples Nacional) para empresas do regime ME, com
 ✔️ AutoMapper: elimina código de conversão manual entre entidades e DTOs.
 
 ✔️ FluentValidation: regras de validação centralizadas nos próprios DTOs.
+---
 
+## 🛠️ Decisões Técnicas
+
+- **EF Core vs. NHibernate:** escolhi EF Core por ser nativo em .NET8 e facilitar migrations automáticas.  
+- **PostgreSQL em vez de SQL Server:** migração para reduzir custos de licença e aproveitar JSONB.  
+- **Reflection para esconder lógica sensível:** usei Reflection para evitar duplicação de código nas regras de cálculo.  
+- **Docker:** containerizei API e DB para garantir ambiente idêntico em desenvolvimento e produção. Depois desfiz para evitar custos na AWS.  
 ---
 
 ## 🚀 Como Executar o Projeto
@@ -55,7 +65,6 @@ Requisitos
 PostgreSQL
 
 Visual Studio 2022 ou VS Code
-
 ---
 
 ## Clone o projeto
@@ -76,10 +85,9 @@ dotnet ef database update --project APISimplesNacional.Infra --startup-project A
 
 ### Rode a aplicação
 dotnet run --project APISimplesNacional
-
 ---
 
-## 👨💻 Autor
+## 👨💻 Autor 📬 Contato
 Juliano Pereira dos Santos
 - 🔗 **LinkedIn:** [linkedin.com/in/julianopereiradossantos]( https://www.linkedin.com/in/julianopereiradossantos )  
 - ✉️ **Email:** julianops79@gmail.com  
@@ -87,7 +95,7 @@ Juliano Pereira dos Santos
 ### 🌐 Disponível em Produção
 API (Swagger): https://jpstecdev.com.br/apisn/swagger/index.html
 
-Front‑end Angular: https://jpstecdev.com.br/sn/
+Front-end Angular: https://jpstecdev.com.br/sn/
 ---
 
 ## 🧱 Estrutura do Projeto
@@ -215,6 +223,7 @@ SimplesNacional.sln
 ---
 
 ## 🖼️ **Screenshots**
+![Ação](./assets/screenshot.gif)
 
 ### 🔸 Tela Principal
 ![Tela Principal](./assets/screenshot1.png)
