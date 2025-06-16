@@ -84,7 +84,10 @@ Juliano Pereira dos Santos
 - 🔗 **LinkedIn:** [linkedin.com/in/julianopereiradossantos]( https://www.linkedin.com/in/julianopereiradossantos )  
 - ✉️ **Email:** julianops79@gmail.com  
 - 🐙 **GitHub:** [github.com/JulianoPS]( https://github.com/JulianoPS )
+### 🌐 Disponível em Produção
+API (Swagger): https://jpstecdev.com.br/apisn/swagger/index.html
 
+Front‑end Angular: https://jpstecdev.com.br/sn/
 ---
 
 ## 🧱 Estrutura do Projeto
